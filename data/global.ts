@@ -75,25 +75,31 @@ export const footer: Footer = {
         {
           name: "GitHub",
           link: "https://github.com/sohan9542",
-          icon: "/static/icons/github-f.svg",
+        
           leavesWebsite: true,
         },
         {
           name: "LinkedIn",
           link: "https://www.linkedin.com/in/dev-sohan/",
-          icon: "/static/icons/linkedin-f.svg",
+        
           leavesWebsite: true,
         },
         {
           name: "Telegram",
           link: "https://t.me/dev_sohan",
-          icon: "/static/icons/telegram.png",
+  
+          leavesWebsite: true,
+        },
+        {
+          name: "Skype",
+          link: "https://join.skype.com/invite/s6QvjmeKpT6P",
+          
           leavesWebsite: true,
         },
         {
           name: "Email",
           link: "mailto:sohanurrahmants@gmail.com",
-          icon: "/static/icons/mail-f.svg",
+          
           leavesWebsite: true,
         },
       ],

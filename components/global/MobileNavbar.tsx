@@ -37,13 +37,18 @@ export default function MobileNavbar() {
         style={{ zIndex: 101 }}
       >
         <li className="list-none font-bold text-lg">
-          <Link href="/">
-            <img
-              className="mr-3"
-              src="/static/logos/logo_full.svg"
-              width="160"
-            />
-          </Link>
+        <Link href="/">
+          <span className="font-black text-xl flex items-center">
+       
+            {"DevSohan".split("").map((letter, index) => {
+              return (
+                <span key={index} className="hover:text-fun-pink hover:-mt-2 transition-all duration-500 hover:duration-100 click:goodbyeLetterAnim">
+                  {letter}
+                </span>
+              );
+            })}
+          </span>
+        </Link>
         </li>
         <button
           className="burger visible md:hidden"

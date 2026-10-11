@@ -1,14 +1,4 @@
-type Skill = {
-  title: string,
-  icon: string,
-  style?: object
-};
-type Testimonial = {
-  quote: string,
-  name: string,
-  job: string
-};
-
+import type { Skill, Testimonial } from "@/types";
 
 export const skills: Skill[] = [
   {
@@ -72,7 +62,6 @@ export const skills: Skill[] = [
     title: "MongoDB",
     icon: "/static/doodles/skills/mongo.png",
   },
-
 ];
 
 export const testimonials: Testimonial[] = [

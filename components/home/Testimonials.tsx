@@ -1,5 +1,4 @@
-import React from "react";
-import SectionTitle from "../global/SectionTitle";
+import SectionTitle from "@/components/global/SectionTitle";
 import { testimonials } from "@/data/content/home";
 
 function Testimonials() {

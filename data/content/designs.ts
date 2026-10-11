@@ -1,8 +1,4 @@
-type Design = {
-  label: string,
-  img: string,
-  link: string
-}
+import type { Design } from "@/types";
 
 export const designs: Design[] = [
   {

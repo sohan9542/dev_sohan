@@ -1,16 +1,15 @@
-import Footer from "../global/Footer";
+import Footer from "@/components/global/Footer";
 import Head from "next/head";
-import MobileNavbar from "../global/MobileNavbar";
-import Navbar from "../global/Navbar";
-import React, { ReactChildren } from "react";
+import MobileNavbar from "@/components/global/MobileNavbar";
+import Navbar from "@/components/global/Navbar";
+import type { PageProps } from "@/types";
 
-function Page({ currentPage, meta: { title, desc }, children }: PageProps) {
-  const pageTitle = `${
+function Page({ currentPage, meta: { desc }, children }: PageProps) {
+  const pageTitle =
     currentPage === "Home"
       ? "Dev Sohan - Web Developer, Designer, Creator."
-      : `${currentPage} Dev Sohan`
-  }`;
-  console.log(currentPage);
+      : `${currentPage} Dev Sohan`;
+
   return (
     <div
       className="w-full m-auto flex flex-col items-center justify-center min-h-screen opening-box-animate-paddin text-white overflow-hidden md:overflow-visible"
@@ -56,10 +55,8 @@ function Page({ currentPage, meta: { title, desc }, children }: PageProps) {
         <meta
           property="twitter:image"
           content="https://dev-sohan.vercel.app/static/misc/og.png"
-        ></meta>
-
+        />
       </Head>
-   
 
       <main className="p-5 w-full flex-1 text-center">
         <div className="hidden sm:block z-100">
@@ -76,12 +73,3 @@ function Page({ currentPage, meta: { title, desc }, children }: PageProps) {
 }
 
 export default Page;
-
-type PageProps = {
-  currentPage: string;
-  meta: {
-    title?: string;
-    desc: string;
-  };
-  children?: JSX.Element | JSX.Element[];
-};

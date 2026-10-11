@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, type SVGProps } from "react";
 import Link from "next/link";
-import {routes} from "@/data/global";
+import { routes } from "@/data/global";
 import useDelayedRender from "use-delayed-render";
 
 export default function MobileNavbar() {
@@ -33,22 +32,26 @@ export default function MobileNavbar() {
   return (
     <nav>
       <div
-        className={`w-full justify-between flex items-center ${isMenuRendered && 'bg-bg'} p-5`}
+        className={`w-full justify-between flex items-center ${
+          isMenuRendered && "bg-bg"
+        } p-5`}
         style={{ zIndex: 101 }}
       >
         <li className="list-none font-bold text-lg">
-        <Link href="/">
-          <span className="font-black text-xl flex items-center">
-       
-            {"DevSohan".split("").map((letter, index) => {
-              return (
-                <span key={index} className="hover:text-fun-pink hover:-mt-2 transition-all duration-500 hover:duration-100 click:goodbyeLetterAnim">
-                  {letter}
-                </span>
-              );
-            })}
-          </span>
-        </Link>
+          <Link href="/">
+            <span className="font-black text-xl flex items-center">
+              {"DevSohan".split("").map((letter, index) => {
+                return (
+                  <span
+                    key={index}
+                    className="hover:text-fun-pink hover:-mt-2 transition-all duration-500 hover:duration-100 click:goodbyeLetterAnim"
+                  >
+                    {letter}
+                  </span>
+                );
+              })}
+            </span>
+          </Link>
         </li>
         <button
           className="burger visible md:hidden"
@@ -68,6 +71,7 @@ export default function MobileNavbar() {
           {routes.map((item, index) => {
             return (
               <li
+                key={item.path}
                 className="border-b border-gray-900 text-gray-100 text-sm font-semibold"
                 style={{ transitionDelay: `${150 + index * 25}ms` }}
               >
@@ -83,7 +87,11 @@ export default function MobileNavbar() {
   );
 }
 
-function MenuIcon(props) {
+type IconProps = SVGProps<SVGSVGElement> & {
+  "data-hide"?: boolean;
+};
+
+function MenuIcon(props: IconProps) {
   return (
     <svg
       className="h-5 w-5 absolute text-gray-100"
@@ -111,7 +119,7 @@ function MenuIcon(props) {
   );
 }
 
-function CrossIcon(props) {
+function CrossIcon(props: IconProps) {
   return (
     <svg
       className="h-5 w-5 absolute text-gray-100"

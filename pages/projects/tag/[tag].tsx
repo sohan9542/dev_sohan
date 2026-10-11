@@ -1,50 +1,59 @@
-import Page from "components/utility/Page";
-
-import { GetStaticProps, GetStaticPaths } from "next";
-import { allKebabTags, allTags } from "@/data/content/projects";
-
-import projects from "@/data/content/projects";
-
-import { kebabCase, kebabArray } from "@/utils/utils";
-import Projects from "components/projects/Projects";
-import Heading from "components/projects/Heading";
-import More from "components/projects/More";
 import Link from "next/link";
+import type { GetStaticPaths, GetStaticProps } from "next";
+import Page from "@/components/utility/Page";
+import projects, { allKebabTags, allTags } from "@/data/content/projects";
+import { kebabArray, kebabCase } from "@/utils/utils";
+import Projects from "@/components/projects/Projects";
+import Heading from "@/components/projects/Heading";
+import type { Project } from "@/types";
+
+type TagPageProps = {
+  filteredProjects: Project[];
+  tag: string;
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allTags = [];
-  projects.forEach((project) =>
+  const tagNames: string[] = [];
+
+  projects.forEach((project) => {
     project.tags.forEach((tag) => {
-      allTags.push(tag);
-    })
-  );
-  const uniqueAllTags = [...new Set(allTags)];
-  const allTagsPaths = uniqueAllTags.map((path) => ({
-    params: { tag: `${kebabCase(path)}` },
+      tagNames.push(tag);
+    });
+  });
+
+  const uniqueTags = [...new Set(tagNames)];
+  const paths = uniqueTags.map((path) => ({
+    params: { tag: kebabCase(path) },
   }));
+
   return {
-    paths: allTagsPaths,
+    paths,
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({params}: {params: {tag: string}}) => {
-  const tag = params.tag;
+export const getStaticProps: GetStaticProps<TagPageProps> = async (context) => {
+  const tag = context.params?.tag;
+
+  if (typeof tag !== "string") {
+    return { notFound: true };
+  }
+
   const filteredProjects = projects.filter((project) =>
-    [...kebabArray(project.tags)].includes(tag)
+    kebabArray(project.tags).includes(tag)
   );
+
   return {
-    props: JSON.parse(
-      JSON.stringify({
-        filteredProjects,
-        tag: tag,
-      })
-    ),
+    props: {
+      filteredProjects,
+      tag,
+    },
   };
 };
 
-function PostPage({ filteredProjects, tag }) {
-  const capsTag = allTags[allKebabTags.indexOf(tag)];
+function TagPage({ filteredProjects, tag }: TagPageProps) {
+  const capsTag = allTags[allKebabTags.indexOf(tag)] ?? tag;
+
   return (
     <Page
       currentPage="Projects"
@@ -61,9 +70,8 @@ function PostPage({ filteredProjects, tag }) {
           View All
         </div>
       </Link>
-      {/* <More /> */}
     </Page>
   );
 }
 
-export default PostPage;
+export default TagPage;

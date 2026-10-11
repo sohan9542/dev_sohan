@@ -1,9 +1,7 @@
 import Link from "next/link";
-import React from "react";
-import SectionTitle from "../global/SectionTitle";
+import SectionTitle from "@/components/global/SectionTitle";
 import projects from "@/data/content/projects";
-
-import ProjectCard from "../projects/ProjectCard";
+import ProjectCard from "@/components/projects/ProjectCard";
 
 function Projects() {
   return (

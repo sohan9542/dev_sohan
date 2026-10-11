@@ -1,17 +1,22 @@
 import Link from "next/link";
-import React from "react";
 import { routes } from "@/data/global";
 
-function Navbar({ currentPage }) {
+type NavbarProps = {
+  currentPage: string;
+};
+
+function Navbar({ currentPage }: NavbarProps) {
   return (
     <nav className="flex items-center justify-between">
       <li className="list-none font-bold text-lg cursor-pointer">
         <Link href="/">
           <span className="font-black text-xl flex items-center">
-       
             {"DevSohan".split("").map((letter, index) => {
               return (
-                <span key={index} className="hover:text-fun-pink hover:-mt-2 transition-all duration-500 hover:duration-100 click:goodbyeLetterAnim">
+                <span
+                  key={index}
+                  className="hover:text-fun-pink hover:-mt-2 transition-all duration-500 hover:duration-100 click:goodbyeLetterAnim"
+                >
                   {letter}
                 </span>
               );

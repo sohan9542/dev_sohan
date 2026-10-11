@@ -1,5 +1,5 @@
-import { kebabCase, kebabArray } from "@/utils/utils";
-import { Project } from "types";
+import { kebabCase } from "@/utils/utils";
+import type { Project } from "@/types";
 
 const projects: Project[] = [
   {
@@ -17,7 +17,16 @@ const projects: Project[] = [
     desc: "Build a digital Tour® that scales & converts",
     img: "/static/projects/project1.png",
     link: "https://tour.video/",
-    tags: ["React", "CSS", "TailwindCSS", "ApextChart", "API", "Material UI", "Swiper","Moment"],
+    tags: [
+      "React",
+      "CSS",
+      "TailwindCSS",
+      "ApextChart",
+      "API",
+      "Material UI",
+      "Swiper",
+      "Moment",
+    ],
   },
   {
     id: 2,
@@ -26,7 +35,7 @@ const projects: Project[] = [
     img: "/static/projects/exp.png",
     link: "https://crypto-expert.vercel.app/",
     github: "",
-    tags: ["Express", "MongoDB","React", "API", "Tailwind CSS", "Node","CSS"],
+    tags: ["Express", "MongoDB", "React", "API", "Tailwind CSS", "Node", "CSS"],
   },
   {
     id: 3,
@@ -59,7 +68,7 @@ const projects: Project[] = [
     desc: "Question & Answer Taking Servey Platform.",
     img: "/static/projects/social.png",
     github: "https://github.com/sohan9542/quikaidfive",
-    link:"https://endearing-scone-61949f.netlify.app/",
+    link: "https://endearing-scone-61949f.netlify.app/",
     tags: ["HTML", "JAVASCRIPT", "CSS"],
   },
   {
@@ -68,8 +77,8 @@ const projects: Project[] = [
     desc: "A Crypto Platfrom to buy and mint NFT's.",
     img: "/static/projects/lost.png",
     link: "https://papaya-wisp-9defa0.netlify.app/",
-    github:"https://github.com/sohan9542/Unbox-NFT-Staking",
-    tags: ["TypeScript", "React JS","Talwind CSS", "CSS"],
+    github: "https://github.com/sohan9542/Unbox-NFT-Staking",
+    tags: ["TypeScript", "React JS", "Talwind CSS", "CSS"],
   },
   {
     id: 8,
@@ -77,18 +86,20 @@ const projects: Project[] = [
     desc: "SafeTag Tracking: Accurate, reliable gps trackers backed up by a GPS tracking service",
     img: "/static/projects/safetag.png",
     link: "https://www.safetagtracking.com/",
-    tags: ["API", "Javascript",'React','Tailwind CSS', 'SCSS'],
+    tags: ["API", "Javascript", "React", "Tailwind CSS", "SCSS"],
   },
 ];
 
-export const allTags = []
+export const allTags: string[] = [];
 
 projects.forEach((project) => {
-  project.tags.forEach((tag) => !allTags.includes(tag) && allTags.push(tag))
+  project.tags.forEach((tag) => {
+    if (!allTags.includes(tag)) {
+      allTags.push(tag);
+    }
+  });
 });
 
-export const allKebabTags = allTags.map(tag => (
-  kebabCase(tag)
-))
+export const allKebabTags = allTags.map((tag) => kebabCase(tag));
 
-export default projects
+export default projects;

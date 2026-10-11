@@ -9,7 +9,7 @@ function Navbar({ currentPage }: NavbarProps) {
   return (
     <nav className="flex items-center justify-between">
       <li className="list-none font-bold text-lg cursor-pointer">
-        <Link href="/">
+        <Link href="/" passHref>
           <span className="font-black text-xl flex items-center">
             {"DevSohan".split("").map((letter, index) => {
               return (

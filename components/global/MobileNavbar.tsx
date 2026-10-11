@@ -38,7 +38,7 @@ export default function MobileNavbar() {
         style={{ zIndex: 101 }}
       >
         <li className="list-none font-bold text-lg">
-          <Link href="/">
+          <Link href="/" passHref>
             <span className="font-black text-xl flex items-center">
               {"DevSohan".split("").map((letter, index) => {
                 return (

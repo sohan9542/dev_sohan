@@ -1,5 +1,3 @@
-import React from "react";
-
 function Heading() {
   return (
     <div className="py-16 sm:py-20 w-full text-center relative">
@@ -8,6 +6,7 @@ function Heading() {
         <img
           className="sqD w-12 -top-6 -right-8 absolute"
           src="/static/doodles/skills/fillStar.svg"
+          alt=""
         />
       </h1>
       <p className="text-fun-gray text-xl sm:text-2xl">

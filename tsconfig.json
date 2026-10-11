@@ -18,17 +18,12 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/data/*": ["data/*"],
-      "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"],
-      "@/utils/*": ["utils/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/types": ["types/index.ts"],
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".contentlayer/generated"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

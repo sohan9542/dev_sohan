@@ -1,12 +1,14 @@
+/** @type {import('next').NextConfig} */
 module.exports = {
-    swcMinify: true,
-    async redirects() {
-        return [
-          {
-            source: '/blog',
-            destination: '/',
-            permanent: true,
-          },
-        ]
+  reactStrictMode: true,
+  swcMinify: true,
+  async redirects() {
+    return [
+      {
+        source: "/blog",
+        destination: "/",
+        permanent: true,
       },
+    ];
+  },
 };
